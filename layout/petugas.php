@@ -17,7 +17,6 @@ $data = $pts->tampil();
                     <td>USERNAME</td>
                     <td>PASSWORD</td>
                     <td>NAMA</td>
-                    <td>LEVEL</td>
                 </tr>
                 <?php foreach ($data as $key => $item) : ?>
                     <tr>
@@ -25,7 +24,6 @@ $data = $pts->tampil();
                         <td><?= $item['username']; ?></td>
                         <td><?= $item['password']; ?></td>
                         <td><?= $item['nama']; ?></td>
-                        <td><?= $item['level']; ?></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

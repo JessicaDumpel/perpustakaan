@@ -24,8 +24,8 @@ class Petugas
     function tambah($data)
     {
         try {
-            $string = "INSERT INTO petugas (username, password, nama, level)
-            value (:username, :password, :nama, :level)";
+            $string = "INSERT INTO petugas (username, password, nama)
+            value (:username, :password, :nama)";
             $sql = $this->conn->conn->prepare($string);
             $sql->execute($data);
             return true;

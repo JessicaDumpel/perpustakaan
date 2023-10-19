@@ -17,11 +17,6 @@
                     <label for="">Nama</label>
                     <input type="text" class="form-control" name="nama">
                 </div>
-
-                <div class="form-group">
-                    <label for="">Level</label>
-                    <input type="text" class="form-control" name="level">
-                </div>
                 <div class="form-group">
                     <button type="submit" name="tambah_petugas" class="btn btn-primary btn-sm">Simpan</button>
                 </div>

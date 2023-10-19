@@ -13,7 +13,7 @@ $data = $agt->tampil();
         <div class="card-body">
             <table class="table table-bordered">
                 <tr>
-                    <td>No</td>
+                    <td>NO</td>
                     <td>NAMA</td>
                     <td>JENIS KELAMIN</td>
                     <td>TELP/HP</td>
@@ -26,6 +26,10 @@ $data = $agt->tampil();
                         <td><?= $item['jenis_kelamin']; ?></td>
                         <td><?= $item['no_telp']; ?></td>
                         <td><?= $item['alamat']; ?></td>
+                        <td>
+                            <a href="/perpustakaan/index.php/anggota/ubah?id_anggota=<?= $item['id_anggota'] ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/perpustakaan/app/proses.php?hapus=anggota&id_anggota=<?= $item['id_anggota'] ?>" class="btn btn-danger btn-sm">Hapus</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>

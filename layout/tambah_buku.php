@@ -11,7 +11,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Pengarang</label>
-                    <textarea class="form-control" name="pengarang" rows="3"></textarea>
+                    <input type="text" class="form-control" name="pengarang">
                 </div>
                 <div class="form-group">
                     <label for="">Kategori</label>

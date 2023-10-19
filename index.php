@@ -65,6 +65,9 @@
                         case $me . '/index.php/petugas/add':
                             require "layout/tambah_petugas.php";
                             break;
+                        case $me . '/index.php/anggota/ubah':
+                            require "layout/ubah_anggota.php";
+                            break;
                         default:
                             http_response_code(404);
                             echo "404";
