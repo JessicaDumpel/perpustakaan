@@ -3,7 +3,7 @@ include "inc/Connection.php";
 include "app/Anggota.php";
 
 $agt = new Anggota();
-$item = $anggota->get_id($_GET['idanggota']);
+$item = $agt->get_id($_GET['id_anggota']);
 ?>
 <div class="col-md-12">
     <div class="card">
@@ -14,7 +14,6 @@ $item = $anggota->get_id($_GET['idanggota']);
             <form action="/perpustakaan/app/proses.php" method="post">
                 <div class="form-group">
                     <label for="">Nama</label>
-                    <input type="hidden" class="form-control" name="id" value="<?= $item['id'] ?>">
                     <input type="text" class="form-control" name="nama" value="<?= $item['nama'] ?>">
                 </div>
                 <div class="form-group">
@@ -23,14 +22,14 @@ $item = $anggota->get_id($_GET['idanggota']);
                 </div>
                 <div class="form-group">
                     <label for="">NO_TELP</label>
-                    <input type="text" class="form-control" name="no_telp" value="<?= $item['no_telp'] ?>">>
+                    <input type="text" class="form-control" name="no_telp" value="<?= $item['no_telp'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="">ALAMAT</label>
-                    <input type="text" class="form-control" name="alamat" value="<?= $item['alamat'] ?>">>
+                    <input type="text" class="form-control" name="alamat" value="<?= $item['alamat'] ?>">
                 </div>
                 <div class="form-group">
-                    <button type="submit" name="ubah_anggota" class="btn btn-primary btn-sm">Hapus</button>
+                    <button type="submit" name="ubah_anggota" class="btn btn-primary btn-sm">Simpan</button>
                 </div>
             </form>
         </div>

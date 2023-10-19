@@ -33,4 +33,15 @@ class Buku
             echo $th->getMessage();
         }
     }
+    public function get_id($id): array
+    {
+        $string = "SELECT * FROM buku WHERE id_buku='$id'";
+        $sql = $this->conn->conn->prepare($string);
+        $sql->execute();
+        $data = [];
+        while ($row = $sql->fetch()) {
+            $data[] = $row;
+        }
+        return $data[0];
+    }
 }

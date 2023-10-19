@@ -27,10 +27,10 @@ if (isset($_POST['tambah_anggota'])) {
     // print_r($data);
     // Proses Tambah
     $cek = $bk->tambah($data);
-    // if ($cek != true) {
-    //     echo $cek;
-    // } else
-    //     header("Location: http://localhost/perpustakaan/index.php/buku");
+    if ($cek != true) {
+        echo $cek;
+    } else
+        header("Location: http://localhost/perpustakaan/index.php/buku");
 } else if (isset($_POST['tambah_peminjaman'])) {
     include "Peminjaman.php";
     $pjm = new Peminjaman();
@@ -55,7 +55,7 @@ if (isset($_POST['tambah_anggota'])) {
     ];
     $pts->tambah($data);
     header("Location: http://localhost/perpustakaan/index.php/petugas");
-} else if (isset($_POST['ubah_siswa'])) {
+} else if (isset($_POST['ubah_anggota'])) {
     // echo $_POST['nama'];
     include "Anggota.php";
     $agt = new Anggota();
@@ -65,11 +65,12 @@ if (isset($_POST['tambah_anggota'])) {
         "jenis_kelamin" => $_POST['jenis_kelamin'],
         "no_telp" => $_POST['no_telp'],
         "alamat" => $_POST['alamat'],
-        "id" => $_POST['id']
+
     ];
     // echo json_encode($data);
     $cek = $sw->ubah($data);
     // Proses Tambah
+
     if ($cek) {
         header("Location: http://localhost/perpustakaan/index.php/anggota");
     } else echo $cek;
