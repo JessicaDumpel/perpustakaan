@@ -33,22 +33,27 @@ class Anggota
             echo $th->getMessage();
         }
     }
-    public function get_id($id): array
+    public function get_id($id)
     {
-        $string = "SELECT * FROM anggota WHERE id_anggota='$id'";
-        $sql = $this->conn->conn->prepare($string);
-        $sql->execute();
-        $data = [];
-        while ($row = $sql->fetch()) {
-            $data[] = $row;
+        try {
+            $string = "SELECT * FROM anggota WHERE id_anggota='$id'";
+            $sql = $this->conn->conn->prepare($string);
+            $sql->execute();
+            $data = [];
+            while ($row = $sql->fetch()) {
+                $data[] = $row;
+            }
+            return $data[0];
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
         }
-        return $data[0];
     }
 
     function ubah($data)
     {
+        // print_r($data);
         try {
-            $string = "UPDATE anggota set nama=:nama, jenis_kelamin=:jenis_kelamin, no_telp=:no_telp, alamat=:alamat WHERE id=:id";
+            $string = "UPDATE anggota set nama=:nama, jenis_kelamin=:jenis_kelamin, no_telp=:no_telp, alamat=:alamat WHERE id_anggota=:id_anggota";
             $sql = $this->conn->conn->prepare($string);
             $sql->execute($data);
             return true;

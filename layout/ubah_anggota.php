@@ -14,6 +14,7 @@ $item = $agt->get_id($_GET['id_anggota']);
             <form action="/perpustakaan/app/proses.php" method="post">
                 <div class="form-group">
                     <label for="">Nama</label>
+                    <input type="hidden" class="form-control" name="id_anggota" value="<?= $item['id_anggota'] ?>">
                     <input type="text" class="form-control" name="nama" value="<?= $item['nama'] ?>">
                 </div>
                 <div class="form-group">
