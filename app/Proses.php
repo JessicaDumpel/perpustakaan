@@ -55,7 +55,7 @@ if (isset($_POST['tambah_anggota'])) {
     ];
     $pts->tambah($data);
     header("Location: http://localhost/perpustakaan/index.php/petugas");
-} else if (isset($_POST['ubah_anggota']) == "anggota") {
+} else if (isset($_POST['ubah_anggota']) == "anggota") 
     // echo $_POST['nama'];
     include "Anggota.php";
     $agt = new Anggota();
