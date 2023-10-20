@@ -68,6 +68,15 @@
                         case $me . '/index.php/anggota/ubah':
                             require "layout/ubah_anggota.php";
                             break;
+                        case $me . '/index.php/buku/ubah':
+                            require "layout/ubah_buku.php";
+                            break;
+                        case $me . '/index.php/peminjaman/ubah':
+                            require "layout/ubah_peminjaman.php";
+                            break;
+                        case $me . '/index.php/petugas/ubah':
+                            require "layout/ubah_petugas.php";
+                            break;
                         default:
                             http_response_code(404);
                             echo "404";

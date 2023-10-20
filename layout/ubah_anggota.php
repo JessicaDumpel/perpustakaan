@@ -19,7 +19,10 @@ $item = $agt->get_id($_GET['id_anggota']);
                 </div>
                 <div class="form-group">
                     <label for="">JENIS_KELAMIN</label>
-                    <input type="text" class="form-control" name="jenis_kelamin" value="<?= $item['jenis_kelamin'] ?>">
+                    <select class="form-control" name="jenis_kelamin">
+                        <option value='L'>Laki-laki</option>
+                        <option value='P'>Perempuan</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="">NO_TELP</label>

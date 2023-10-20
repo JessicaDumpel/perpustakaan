@@ -35,4 +35,39 @@ class Peminjaman
             echo $th->getMessage();
         }
     }
+    public function get_id($id): array
+    {
+        $string = "SELECT * FROM peminjaman WHERE id_peminjaman='$id'";
+        $sql = $this->conn->conn->prepare($string);
+        $sql->execute();
+        $data = [];
+        while ($row = $sql->fetch()) {
+            $data[] = $row;
+        }
+        return $data[0];
+    }
+    function ubah($data)
+    {
+        // print_r($data);
+        try {
+            $string = "UPDATE peminjaman set tanggal_pinjam=:tanggal_pinjam, tanggal_kembali=:tanggal_kembali, peminjam=:peminjam, buku=:buku WHERE id_peminjaman=:id_peminjaman";
+            $sql = $this->conn->conn->prepare($string);
+            $sql->execute($data);
+            return true;
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+        }
+    }
+
+    function hapus($id)
+    {
+        try {
+            $string = "DELETE FROM peminjaman WHERE id_peminjaman='$id'";
+            $sql = $this->conn->conn->prepare($string);
+            $sql->execute();
+            return true;
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+        }
+    }
 }

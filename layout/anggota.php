@@ -18,6 +18,7 @@ $data = $agt->tampil();
                     <td>JENIS KELAMIN</td>
                     <td>TELP/HP</td>
                     <td>ALAMAT</td>
+                    <td>ACTION</td>
                 </tr>
                 <?php foreach ($data as $key => $item) : ?>
                     <tr>

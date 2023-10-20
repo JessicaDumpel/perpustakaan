@@ -18,6 +18,7 @@ $data = $pjm->tampil();
                     <td>TANGGAL_KEMBALI</td>
                     <td>PEMINJAM</td>
                     <td>BUKU</td>
+                    <td>ACTION</td>
                 </tr>
                 <?php foreach ($data as $key => $item) : ?>
                     <tr>
@@ -26,6 +27,10 @@ $data = $pjm->tampil();
                         <td><?= $item['tgl_kembali']; ?></td>
                         <td><?= $item['nama']; ?></td>
                         <td><?= $item['judul']; ?></td>
+                        <td>
+                            <a href="/perpustakaan/index.php/peminjaman/ubah?id_peminjaman=<?= $item['id_peminjaman'] ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/perpustakaan/app/proses.php?hapus=peminjaman&id_peminjaman=<?= $item['id_peminjaman'] ?>" class="btn btn-danger btn-sm">Hapus</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>

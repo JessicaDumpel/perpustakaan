@@ -19,6 +19,8 @@ $data = $bk->tampil();
                     <td>KATEGORI</td>
                     <td>PENERBIT</td>
                     <td>TAHUN</td>
+                    <td>ACTION</td>
+
                 </tr>
                 <?php foreach ($data as $key => $item) : ?>
                     <tr>
@@ -28,6 +30,10 @@ $data = $bk->tampil();
                         <td><?= $item['kategori']; ?></td>
                         <td><?= $item['penerbit']; ?></td>
                         <td><?= $item['tahun']; ?></td>
+                        <td>
+                            <a href="/perpustakaan/index.php/buku/ubah?id_buku=<?= $item['id_buku'] ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/perpustakaan/app/proses.php?hapus=buku&id_buku=<?= $item['id_buku'] ?>" class="btn btn-danger btn-sm">Hapus</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>

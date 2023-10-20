@@ -17,6 +17,7 @@ $data = $pts->tampil();
                     <td>USERNAME</td>
                     <td>PASSWORD</td>
                     <td>NAMA</td>
+                    <td>ACTION</td>
                 </tr>
                 <?php foreach ($data as $key => $item) : ?>
                     <tr>
@@ -24,6 +25,10 @@ $data = $pts->tampil();
                         <td><?= $item['username']; ?></td>
                         <td><?= $item['password']; ?></td>
                         <td><?= $item['nama']; ?></td>
+                        <td>
+                            <a href="/perpustakaan/index.php/petugas/ubah?id=<?= $item['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/perpustakaan/app/proses.php?hapus=petugas&id=<?= $item['id'] ?>" class="btn btn-danger btn-sm">Hapus</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>

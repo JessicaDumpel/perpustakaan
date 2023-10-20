@@ -44,4 +44,28 @@ class Buku
         }
         return $data[0];
     }
+    function ubah($data)
+    {
+        // print_r($data);
+        try {
+            $string = "UPDATE buku set judul=:judul, pengarang=:pengarang, kategori=:kategori, penerbit=:penerbit, tahun=:tahun WHERE id_buku=:id_buku";
+            $sql = $this->conn->conn->prepare($string);
+            $sql->execute($data);
+            return true;
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+        }
+    }
+
+    function hapus($id)
+    {
+        try {
+            $string = "DELETE FROM buku WHERE id_buku='$id'";
+            $sql = $this->conn->conn->prepare($string);
+            $sql->execute();
+            return true;
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+        }
+    }
 }

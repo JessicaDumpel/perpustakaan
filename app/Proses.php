@@ -79,4 +79,76 @@ if (isset($_POST['tambah_anggota'])) {
     $agt = new Anggota();
     $agt->hapus($_GET['id_anggota']);
     header("Location: http://localhost/perpustakaan/index.php/anggota");
+} else if (isset($_POST['ubah_buku']) == "buku") {
+    // echo $_POST['nama'];
+    include "Buku.php";
+    $bk = new Buku();
+    // Mapping data
+    $data = [
+        "judul" => $_POST['nama'],
+        "pengarang" => $_POST['jenis_kelamin'],
+        "kategori" => $_POST['no_telp'],
+        "penerbit" => $_POST['alamat'],
+        "tahun" => $_POST['tahun'],
+        "id_buku" => $_POST['id_buku'],
+
+    ];
+    // print_r($data);
+
+    // Proses Tambah
+    $bk->ubah($data);
+    header("Location: http://localhost/perpustakaan/index.php/buku");
+} else if (isset($_GET['hapus']) && $_GET['hapus'] == 'buku') {
+    // echo "Hapus Buku";
+    include "Buku.php";
+    $bk = new Buku();
+    $bk->hapus($_GET['id_buku']);
+    header("Location: http://localhost/perpustakaan/index.php/buku");
+} else if (isset($_POST['ubah_peminjaman']) == "peminjaman") {
+    // echo $_POST['nama'];
+    include "Peminjaman.php";
+    $pjm = new Peminjaman();
+    // Mapping data
+    $data = [
+        "tanggal_pinjam" => $_POST['tanggal_pinjam'],
+        "tanggal_kembali" => $_POST['tanggal_kembali'],
+        "peminjam" => $_POST['peminjam'],
+        "buku" => $_POST['buku'],
+        "id_peminjaman" => $_POST['id_peminjaman'],
+
+    ];
+    // print_r($data);
+
+    // Proses Tambah
+    $pjm->ubah($data);
+    header("Location: http://localhost/perpustakaan/index.php/peminjaman");
+} else if (isset($_GET['hapus']) && $_GET['hapus'] == 'peminjaman') {
+    // echo "Hapus Peminjaman";
+    include "Peminjaman.php";
+    $pjm = new Peminjaman();
+    $pjm->hapus($_GET['id_peminjaman']);
+    header("Location: http://localhost/perpustakaan/index.php/peminjaman");
+} else if (isset($_POST['ubah_petugas']) == "petugas") {
+    // echo $_POST['nama'];
+    include "Petugas.php";
+    $pts = new Petugas();
+    // Mapping data
+    $data = [
+        "username" => $_POST['username'],
+        "password" => $_POST['password'],
+        "nama" => $_POST['nama'],
+        "id" => $_POST['id'],
+
+    ];
+    // print_r($data);
+
+    // Proses Tambah
+    $pts->ubah($data);
+    header("Location: http://localhost/perpustakaan/index.php/petugas");
+} else if (isset($_GET['hapus']) && $_GET['hapus'] == 'petugas') {
+    // echo "Hapus Petugas";
+    include "Petugas.php";
+    $pts = new Petugas();
+    $pts->hapus($_GET['id']);
+    header("Location: http://localhost/perpustakaan/index.php/petugas");
 }
