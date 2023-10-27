@@ -85,10 +85,10 @@ if (isset($_POST['tambah_anggota'])) {
     $bk = new Buku();
     // Mapping data
     $data = [
-        "judul" => $_POST['nama'],
-        "pengarang" => $_POST['jenis_kelamin'],
-        "kategori" => $_POST['no_telp'],
-        "penerbit" => $_POST['alamat'],
+        "judul" => $_POST['judul'],
+        "pengarang" => $_POST['pengarang'],
+        "kategori" => $_POST['kategori'],
+        "penerbit" => $_POST['penerbit'],
         "tahun" => $_POST['tahun'],
         "id_buku" => $_POST['id_buku'],
 
