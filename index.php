@@ -3,13 +3,19 @@
 
 <head>
     <title>Perpustakaan</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
     <header>
+        <?php
+        session_start();
+        if (!isset($_SESSION["isLogin"])) {
+            header("Location:login.php");
+        }
+        ?>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
@@ -27,6 +33,9 @@
                 <li class="nav-item">
                     <a href="/perpustakaan/index.php/petugas" class="nav-link">Petugas &#160;&#160;&#160;</a>
                 </li>
+                <li class="nav-item">
+                    <a href="/perpustakaan/app/logout.php" class="nav-link">Logout</a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -39,7 +48,8 @@
                     $me = $project_location;
                     $request = strtok($_SERVER['REQUEST_URI'], "?");
                     switch ($request) {
-                        case $me . '/':
+                        case $me . '/index.php':
+                            require "layout/home.php";
                             break;
                         case $me . '/index.php/anggota':
                             require "layout/anggota.php";
@@ -79,7 +89,7 @@
                             break;
                         default:
                             http_response_code(404);
-                            echo "404";
+                            echo "Not Found";
                             break;
                     }
                     ?>
@@ -90,6 +100,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

@@ -1,6 +1,28 @@
 <?php
 include "../inc/Connection.php";
-if (isset($_POST['tambah_anggota'])) {
+
+if (isset($_POST['login'])) {
+    $conn = new Connection();
+    $user = $_POST['username'];
+    $pass = $_POST['password'];
+    $queryUser = "SELECT * FROM user where username = '$user'";
+    $trxUser = $conn->conn->prepare($queryUser);
+    $trxUser->execute();
+    if ($trxUser->rowCount() > 0) {
+        $data = $trxUser->fetchAll()[0];
+        if (password_verify($pass, $data['password'])) {
+            session_start();
+            $_SESSION['uid'] = $data['id'];
+            $_SESSION['nama'] = $data['akses'];
+            $_SESSION['isLogin'] = true;
+            header('Location: http://localhost/perpustakaan/index.php');
+        } else {
+            echo "Password yang anda masukkan tidak sesuai";
+        }
+    } else {
+        echo "User tidak ditemukan";
+    }
+} else if (isset($_POST['tambah_anggota'])) {
     include "Anggota.php";
     $agt = new Anggota();
     // Mapping data
@@ -110,10 +132,10 @@ if (isset($_POST['tambah_anggota'])) {
     $pjm = new Peminjaman();
     // Mapping data
     $data = [
-        "tanggal_pinjam" => $_POST['tanggal_pinjam'],
-        "tanggal_kembali" => $_POST['tanggal_kembali'],
-        "peminjam" => $_POST['peminjam'],
-        "buku" => $_POST['buku'],
+        "tgl_pinjam" => $_POST['tgl_pinjam'],
+        "tgl_kembali" => $_POST['tgl_kembali'],
+        "id_anggota" => $_POST['id_anggota'],
+        "id_buku" => $_POST['id_buku'],
         "id_peminjaman" => $_POST['id_peminjaman'],
 
     ];

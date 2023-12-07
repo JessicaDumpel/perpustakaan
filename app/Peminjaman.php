@@ -46,11 +46,10 @@ class Peminjaman
         }
         return $data[0];
     }
-    function ubah($data)
+    public function ubah($data)
     {
-        // print_r($data);
         try {
-            $string = "UPDATE peminjaman set tanggal_pinjam=:tanggal_pinjam, tanggal_kembali=:tanggal_kembali, peminjam=:peminjam, buku=:buku WHERE id_peminjaman=:id_peminjaman";
+            $string = "UPDATE peminjaman SET tgl_pinjam=:tgl_pinjam, tgl_kembali=:tgl_kembali, id_anggota=:id_anggota, id_buku=:id_buku WHERE id_peminjaman=:id_peminjaman";
             $sql = $this->conn->conn->prepare($string);
             $sql->execute($data);
             return true;
@@ -58,6 +57,7 @@ class Peminjaman
             echo $th->getMessage();
         }
     }
+
 
     function hapus($id)
     {
